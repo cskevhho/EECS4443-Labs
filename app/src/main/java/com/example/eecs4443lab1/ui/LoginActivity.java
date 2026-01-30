@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.eecs4443lab1.R;
+import com.example.eecs4443lab1.data.UserStore;
 import static com.example.eecs4443lab1.util.Validators.*;
 
 public class LoginActivity extends AppCompatActivity {
@@ -43,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         // skip login if remembered
         if (sharedPreferences.getBoolean(KEY_REMEMBER, false)) {
             String username = sharedPreferences.getString(KEY_USERNAME, "");
-            Toast.makeText(this, "Welcome back, " + username + "! 😎👉👉", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_login_success, username), Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(LoginActivity.this, WelcomeActivity.class);
             intent.putExtra("username", username);
             startActivity(intent);
@@ -53,6 +54,14 @@ public class LoginActivity extends AppCompatActivity {
 
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
+
+        UserStore userStore = new UserStore(this);
+
+        TextView createAccLabel = findViewById(R.id.create_acc_label);
+        createAccLabel.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(intent);
+        });
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -80,8 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-            // using hardcoded credentials for ease of lab 1 stuff, maybe change later - Kevin 01302026
-            if (isValidCredentials(username, password)) {
+            if (userStore.isValidUser(username, password)) {
                 incorrectLoginText.setVisibility(View.INVISIBLE);
 
                 if (rememberCheckbox.isChecked()) {
@@ -89,8 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                             .putBoolean(KEY_REMEMBER, true)
                             .putString(KEY_USERNAME, username)
                             .apply();
-                }
-                else {
+                } else {
                     sharedPreferences.edit()
                             .putBoolean(KEY_REMEMBER, false)
                             .remove(KEY_USERNAME)
@@ -98,9 +105,9 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 // did it work?
-                Toast.makeText(this, "Welcome, " + username + "! 😎", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.toast_login_success, username), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(LoginActivity.this, WelcomeActivity.class);
-                intent.putExtra("username", username); // if we have to pass in the info later for another lab - Kevin 01302026
+                intent.putExtra("username", username);
                 startActivity(intent);
                 finish();
             } else {

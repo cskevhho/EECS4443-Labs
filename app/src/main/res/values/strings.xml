@@ -16,7 +16,16 @@
     <string name="register_label">Register</string>
     <string name="signin_label">Already have an account? Login now.</string>
     <string name="welcome_title">WELCOME</string>
-    <string name="welcome_text">Welcome home, User!</string>
+    <string name="welcome_text">Welcome home, %1$s!</string>
     <string name="catdancing_gif">Cat Dancing GIF</string>
     <string name="lets_party">Let\'s Party 🎉</string>
+
+<!--  Toast Notifs  -->
+    <string name="toast_login_success">Welcome, %1$s! 😎👉👉</string>
+    <string name="toast_return_login">Welcome back, %1$s!</string>
+    <string name="toast_fill_in_fields">Please fill in all fields.</string>
+    <string name="toast_password_mismatch">Passwords do not match.</string>
+    <string name="toast_username_taken">Username already exists.</string>
+    <string name="toast_registration_success">Registration successful! Please log in.</string>
+
 </resources>

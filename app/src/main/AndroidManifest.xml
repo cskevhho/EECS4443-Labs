@@ -20,6 +20,7 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="com.example.eecs4443lab1.ui.RegisterActivity" />
         <activity android:name="com.example.eecs4443lab1.ui.WelcomeActivity" />
     </application>
 

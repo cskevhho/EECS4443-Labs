@@ -46,7 +46,8 @@
         app:layout_constraintBottom_toTopOf="@id/lets_party_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="48dp" />
+        android:layout_marginTop="48dp"
+        tools:ignore="MissingClass" />
     <!-- Let's Party Text -->
     <TextView
         android:id="@+id/lets_party_text"
