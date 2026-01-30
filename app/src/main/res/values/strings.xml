@@ -11,4 +11,7 @@
     <string name="remember_me_label">Remember me?</string>
     <string name="username_input">Username…</string>
     <string name="username_title">Username</string>
+    <string name="register_title">Register</string>
+    <string name="passwordAgain_title">Confirm Password</string>
+    <string name="register_label">Register</string>
 </resources>
