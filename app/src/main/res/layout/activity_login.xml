@@ -77,6 +77,7 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:contentDescription="@string/password_visibility"
+        android:src="@drawable/baseline_visibility_24"
         android:layout_marginEnd="48dp"
         app:layout_constraintTop_toBottomOf="@id/password_title"
         app:layout_constraintBottom_toTopOf="@id/remember_checkbox"

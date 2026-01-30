@@ -12,14 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EECS4443Lab1">
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.eecs4443lab1.ui.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name="com.example.eecs4443lab1.ui.WelcomeActivity" />
     </application>
 
 </manifest>
