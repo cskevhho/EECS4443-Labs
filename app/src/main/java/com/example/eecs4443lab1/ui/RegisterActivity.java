@@ -21,6 +21,14 @@ public class RegisterActivity extends AppCompatActivity {
     private ImageButton passwordVisibilityBtn, passwordAgainVisibilityBtn;
     private boolean passwordVisible = false, passwordAgainVisible = false;
 
+    private String getPasswordError(String password) {
+        if (password.length() < 6) return "Password must be at least 6 characters.";
+        if (!password.matches(".*\\d.*")) return "Password must include at least one number.";
+        if (!password.matches(".*[!@#$%^&*()_+\\-\\=\\[\\]{};':\"\\\\|,.<>/?].*"))
+            return "Password must include at least one special character.";
+        return null; // valid
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,24 +71,41 @@ public class RegisterActivity extends AppCompatActivity {
 
         registerBtn.setOnClickListener(v -> {
             String username = usernameField.getText().toString().trim();
-            String password = passwordField.getText().toString().trim();
-            String passwordAgain = passwordAgainField.getText().toString().trim();
+            String password = passwordField.getText().toString();
+            String passwordAgain = passwordAgainField.getText().toString();
 
+            // Check if any field is empty
             if (isEmpty(username) || isEmpty(password) || isEmpty(passwordAgain)) {
-                Toast.makeText(this, getString(R.string.toast_fill_in_fields), Toast.LENGTH_SHORT).show();
-                return;
-            }
-            if (!password.equals(passwordAgain)) {
-                Toast.makeText(this, getString(R.string.toast_password_mismatch), Toast.LENGTH_SHORT).show();
-                return;
-            }
-            if (userStore.userExists(username)) {
-                Toast.makeText(this, getString(R.string.toast_username_taken), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Please fill in all fields.", Toast.LENGTH_SHORT).show();
                 return;
             }
 
+            // Check if passwords match
+            if (!password.equals(passwordAgain)) {
+                Toast.makeText(this, "Passwords do not match. Please re-enter.", Toast.LENGTH_SHORT).show();
+                passwordField.setText("");
+                passwordAgainField.setText("");
+                return;
+            }
+
+            // Check password rules
+            String passwordError = getPasswordError(password); // returns null if valid
+            if (passwordError != null) {
+                Toast.makeText(this, passwordError + " Please enter again.", Toast.LENGTH_LONG).show();
+                passwordField.setText("");
+                passwordAgainField.setText("");
+                return;
+            }
+
+            // Check if username already exists
+            if (userStore.userExists(username)) {
+                Toast.makeText(this, "Username is already taken. Please choose another.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // All checks passed — register user
             userStore.addUser(username, password);
-            Toast.makeText(this, getString(R.string.toast_registration_success), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Registration successful!", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();
