@@ -40,7 +40,7 @@
         android:id="@+id/party_gif"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:contentDescription="@string/catdancing_gif"
+        android:contentDescription="@string/cat_dancing_gif"
         android:src="@drawable/cat_dancing"
         app:layout_constraintTop_toBottomOf="@id/welcome_text"
         app:layout_constraintBottom_toTopOf="@id/lets_party_text"

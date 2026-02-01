@@ -20,12 +20,13 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText usernameField, passwordField, passwordAgainField;
     private ImageButton passwordVisibilityBtn, passwordAgainVisibilityBtn;
     private boolean passwordVisible = false, passwordAgainVisible = false;
+    private static final int MIN_PASSWORD_LENGTH = 6;
 
     private String getPasswordError(String password) {
-        if (password.length() < 6) return "Password must be at least 6 characters.";
-        if (!password.matches(".*\\d.*")) return "Password must include at least one number.";
+        if (password.length() < MIN_PASSWORD_LENGTH) return getString(R.string.toast_password_too_short);
+        if (!password.matches(".*\\d.*")) return getString(R.string.toast_password_missing_num);
         if (!password.matches(".*[!@#$%^&*()_+\\-\\=\\[\\]{};':\"\\\\|,.<>/?].*"))
-            return "Password must include at least one special character.";
+            return getString(R.string.toast_password_missing_symbol);
         return null; // valid
     }
 
@@ -41,7 +42,7 @@ public class RegisterActivity extends AppCompatActivity {
         passwordAgainVisibilityBtn = findViewById(R.id.passwordAgain_visibility_button);
         Button registerBtn = findViewById(R.id.register_btn);
         Button cancelBtn = findViewById(R.id.cancel_btn);
-        TextView signinLabel = findViewById(R.id.signin_label);
+        TextView signInLabel = findViewById(R.id.sign_in_label);
 
         UserStore userStore = new UserStore(this);
 
@@ -76,13 +77,13 @@ public class RegisterActivity extends AppCompatActivity {
 
             // Check if any field is empty
             if (isEmpty(username) || isEmpty(password) || isEmpty(passwordAgain)) {
-                Toast.makeText(this, "Please fill in all fields.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.toast_fill_in_fields), Toast.LENGTH_SHORT).show();
                 return;
             }
 
             // Check if passwords match
             if (!password.equals(passwordAgain)) {
-                Toast.makeText(this, "Passwords do not match. Please re-enter.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.toast_password_mismatch), Toast.LENGTH_SHORT).show();
                 passwordField.setText("");
                 passwordAgainField.setText("");
                 return;
@@ -99,13 +100,13 @@ public class RegisterActivity extends AppCompatActivity {
 
             // Check if username already exists
             if (userStore.userExists(username)) {
-                Toast.makeText(this, "Username is already taken. Please choose another.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.toast_username_taken), Toast.LENGTH_SHORT).show();
                 return;
             }
 
             // All checks passed — register user
             userStore.addUser(username, password);
-            Toast.makeText(this, "Registration successful!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_registration_success), Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();
@@ -117,7 +118,7 @@ public class RegisterActivity extends AppCompatActivity {
             passwordAgainField.setText("");
         });
 
-        signinLabel.setOnClickListener(v -> {
+        signInLabel.setOnClickListener(v -> {
             Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();

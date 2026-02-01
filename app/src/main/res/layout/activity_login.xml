@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.LoginActivity">
-    
+
+    <!-- Title -->
     <TextView
         android:id="@+id/login_title"
         android:layout_width="wrap_content"
@@ -17,6 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Incorrect login text -->
     <TextView
         android:id="@+id/incorrect_login_text"
         android:layout_width="wrap_content"
@@ -27,15 +29,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/login_title" />
 
+    <!-- Username label -->
     <TextView
         android:id="@+id/username_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/username_title"
+        android:text="@string/username_label"
         app:layout_constraintTop_toBottomOf="@id/incorrect_login_text"
         app:layout_constraintBottom_toTopOf="@id/username_text_field"
         app:layout_constraintStart_toStartOf="@id/username_text_field" />
 
+    <!-- Username input -->
     <EditText
         android:id="@+id/username_text_field"
         android:layout_width="0dp"
@@ -47,19 +51,20 @@
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@id/password_title"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/username_title" />
 
+    <!-- Password label -->
     <TextView
         android:id="@+id/password_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/password_title"
+        android:text="@string/password_label"
         app:layout_constraintTop_toBottomOf="@id/username_text_field"
         app:layout_constraintBottom_toTopOf="@id/password_text_field"
         app:layout_constraintStart_toStartOf="@id/password_text_field" />
 
+    <!-- Password input -->
     <EditText
         android:id="@+id/password_text_field"
         android:layout_width="0dp"
@@ -73,6 +78,7 @@
         app:layout_constraintEnd_toStartOf="@id/password_visibility_button"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <!-- Show password button -->
     <ImageButton
         android:id="@+id/password_visibility_button"
         android:layout_width="48dp"
@@ -85,6 +91,7 @@
         app:layout_constraintStart_toEndOf= "@id/password_text_field"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!-- Remember me checkbox -->
     <CheckBox
         android:id="@+id/remember_checkbox"
         android:layout_width="48dp"
@@ -93,6 +100,7 @@
         app:layout_constraintBottom_toTopOf="@id/create_acc_label"
         app:layout_constraintStart_toStartOf= "@id/password_text_field" />
 
+    <!-- Remember me label -->
     <TextView
         android:id="@+id/remember_label"
         android:layout_width="wrap_content"
@@ -102,6 +110,7 @@
         app:layout_constraintBottom_toTopOf="@id/create_acc_label"
         app:layout_constraintStart_toEndOf= "@id/remember_checkbox" />
 
+    <!-- Create account label -->
     <TextView
         android:id="@+id/create_acc_label"
         android:layout_width="wrap_content"
@@ -114,6 +123,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <!-- Login button -->
     <Button
         android:id="@+id/login_btn"
         android:layout_width="96dp"
@@ -124,6 +134,7 @@
         app:layout_constraintEnd_toStartOf="@id/cancel_btn"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <!-- Cancel button -->
     <Button
         android:id="@+id/cancel_btn"
         android:layout_width="96dp"

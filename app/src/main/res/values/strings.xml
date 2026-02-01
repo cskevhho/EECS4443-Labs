@@ -1,30 +1,35 @@
 <resources>
     <string name="app_name">EECS4443Lab1</string>
     <string name="cancel_label">Cancel</string>
+    <string name="cat_dancing_gif">Cat Dancing GIF</string>
     <string name="create_acc_label">Don\'t have an account? Sign up now.</string>
+    <string name="confirm_password_visibility">Confirm password visibility</string>
     <string name="incorrect_login">Incorrect username or password.</string>
-    <string name="login_title">Login</string>
+    <string name="lets_party">Let\'s Party 🎉</string>
+    <string name="login_title">Login here</string>
     <string name="login_label">Login</string>
     <string name="password_input">Password…</string>
-    <string name="password_title">Password</string>
+    <string name="password_label">Password</string>
+    <string name="passwordAgain_input">Confirm Password…</string>
+    <string name="passwordAgain_label">Confirm Password</string>
     <string name="password_visibility">Password visibility</string>
-    <string name="remember_me_label">Remember me?</string>
-    <string name="username_input">Username…</string>
-    <string name="username_title">Username</string>
-    <string name="register_title">Register</string>
-    <string name="passwordAgain_title">Confirm Password</string>
     <string name="register_label">Register</string>
-    <string name="signin_label">Already have an account? Login now.</string>
+    <string name="remember_me_label">Remember me?</string>
+    <string name="sign_in_label">Already have an account? Login now.</string>
+    <string name="sign_up_title">Sign Up</string>
+    <string name="username_input">Username…</string>
+    <string name="username_label">Username</string>
     <string name="welcome_title">WELCOME</string>
     <string name="welcome_text">Welcome home, %1$s!</string>
-    <string name="catdancing_gif">Cat Dancing GIF</string>
-    <string name="lets_party">Let\'s Party 🎉</string>
 
 <!--  Toast Notifs  -->
     <string name="toast_login_success">Welcome, %1$s! 😎👉👉</string>
     <string name="toast_return_login">Welcome back, %1$s!</string>
     <string name="toast_fill_in_fields">Please fill in all fields.</string>
     <string name="toast_password_mismatch">Passwords do not match.</string>
+    <string name="toast_password_too_short">Password must be at least 6 characters.</string>
+    <string name="toast_password_missing_num">Password must include at least one number.</string>
+    <string name="toast_password_missing_symbol">Password must include at least one special character.</string>
     <string name="toast_username_taken">Username already exists.</string>
     <string name="toast_registration_success">Registration successful! Please log in.</string>
 
