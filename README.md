@@ -17,7 +17,7 @@ Simple login interface.
 - Implemented register screen logic:
   - Input validation, matching passwords, and existing user
 
-**Minh Anh Nguyen** - 
+**Minh Anh Nguyen** - 219116714
 - Created basic UI layouts for the register and welcome screens
 - Implemented register screen logic:
   - Password validation
