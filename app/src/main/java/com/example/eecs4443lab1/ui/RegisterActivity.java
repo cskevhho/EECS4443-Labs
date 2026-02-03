@@ -23,12 +23,29 @@ public class RegisterActivity extends AppCompatActivity {
     private static final int MIN_PASSWORD_LENGTH = 6;
 
     private String getPasswordError(String password) {
-        if (password.length() < MIN_PASSWORD_LENGTH) return getString(R.string.toast_password_too_short);
-        if (!password.matches(".*\\d.*")) return getString(R.string.toast_password_missing_num);
-        if (!password.matches(".*[!@#$%^&*()_+-=\\[\\]{};':\"\\\\|,.<>/?].*"))
+        String passwordRegex =
+                "^(?=.*\\d)(?=.*[!@#$%^&*()_+\\-={}\\[\\]:;\"'<>?,./\\\\|`~]).{6,}$";
+
+        if (!password.matches(passwordRegex)) {
+            if (password.length() < MIN_PASSWORD_LENGTH) {
+                return getString(R.string.toast_password_too_short);
+            }
+            if (!password.matches(".*\\d.*")) {
+                return getString(R.string.toast_password_missing_num);
+            }
             return getString(R.string.toast_password_missing_symbol);
-        return null; // valid
+        }
+
+        return null; // valid password
     }
+
+//    private String getPasswordError(String password) {
+//        if (password.length() < MIN_PASSWORD_LENGTH) return getString(R.string.toast_password_too_short);
+//        if (!password.matches(".*\\d.*")) return getString(R.string.toast_password_missing_num);
+//        if (!password.matches(".*[!@#$%^&*()_+-=\\[\\]{};':\"\\\\|,.<>/?].*"))
+//            return getString(R.string.toast_password_missing_symbol);
+//        return null; // valid
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
