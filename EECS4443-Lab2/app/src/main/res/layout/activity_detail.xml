@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="ui.DetailActivity">
+    tools:context="com.example.eecs4443_lab2.ui.DetailActivity">
 
     <ImageView
         android:id="@+id/detail_image"

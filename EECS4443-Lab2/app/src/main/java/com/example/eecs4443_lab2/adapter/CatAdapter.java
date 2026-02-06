@@ -67,9 +67,8 @@ public class CatAdapter extends RecyclerView.Adapter<CatAdapter.ViewHolder> {
         holder.imageView.setImageResource(getSafeImageResId(cat));
         holder.imageView.setContentDescription(holder.titleView.getText()); //
     }
-    }
 
-    // The getter functions below are helper methods for null safety in onBindViewHolder. The codeblck would look terrible else how. - Kevin 20260206
+    // The getter functions below are helper methods for null safety in onBindViewHolder. The codeblock would look terrible else how. - Kevin 20260206
     private String getSafeTitle(@NonNull ViewHolder holder, Cat cat) {
         if (cat != null && cat.getTitle() != null && !cat.getTitle().trim().isEmpty()) {
             return cat.getTitle();

@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EECS4443Lab2">
         <activity
-            android:name=".ui.MainActivity"
+            android:name="com.example.eecs4443_lab2.ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

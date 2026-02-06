@@ -20,4 +20,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "EECS4443-Lab2"
-include(":app")
+include ':app'
