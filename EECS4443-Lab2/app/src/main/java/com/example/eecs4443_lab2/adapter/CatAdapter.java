@@ -15,13 +15,23 @@ import com.example.eecs4443_lab2.model.Cat;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
- This is used to manage and bind data to views. It will be used to create view holders and bind item data to the views in the RecyclerView.
- Remember, Adapters and ViewHolders naturally are tightly coupled for the most part and are usually written together. - Kevin 20260206
-*/
 
 
-// Extending RecyclerView like this is necessary because we need to write our own adapter to manage the data and views for our iteration of the lab. - Kevin 20260206
+/**
+ * RecyclerView Adapter for displaying a list of Cat items.
+ * Responsible for creating ViewHolders and binding Cat data to item views.
+ *
+ * NOTE:
+ *      This is used to manage and bind data to views. It will be used to
+ *      create view holders and bind item data to the views in the RecyclerView.
+ *
+ *      Remember, Adapters and ViewHolders naturally are tightly coupled for the
+ *      most part and are usually written together. - Kevin 20260206
+ *
+ *      Extending RecyclerView like this is necessary because we need to write
+ *      our own adapter to manage the data and views for our iteration of the lab. - Kevin 20260206
+ *
+ */
 public class CatAdapter extends RecyclerView.Adapter<CatAdapter.ViewHolder> {
 
     private final List<Cat> cats;
@@ -30,11 +40,17 @@ public class CatAdapter extends RecyclerView.Adapter<CatAdapter.ViewHolder> {
         this.cats = (cats != null) ? cats : new ArrayList<>();
     }
 
+    /**
+     * ViewHolder class that holds references to the views for each item.
+     */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         final ImageView imageView;
         final TextView titleView;
         final TextView descView;
 
+        /**
+         * Need this to bind views to the item layout, inits ViewHolder views.
+         */
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.tile_image);
@@ -48,7 +64,15 @@ public class CatAdapter extends RecyclerView.Adapter<CatAdapter.ViewHolder> {
         return cats.size();
     }
 
-    // NOTE: @NonNull is used to force a non-null return value to prevent null pointer exceptions.
+
+    /**
+     * Creates new ViewHolder, Inflates item layout, returns the new ViewHolder
+     * with the inflated view.
+     *
+     * NOTE:
+     *      The @NonNull decorator is used to force a non-null return value
+     *      to prevent null pointer exceptions.
+     */
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -57,6 +81,10 @@ public class CatAdapter extends RecyclerView.Adapter<CatAdapter.ViewHolder> {
         return new ViewHolder(view);
     }
 
+    /**
+     * Binds Cat data to the views in the ViewHolder for position passed into
+     * the arguments.
+     */
     @NonNull
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
@@ -69,7 +97,9 @@ public class CatAdapter extends RecyclerView.Adapter<CatAdapter.ViewHolder> {
         holder.imageView.setContentDescription(holder.titleView.getText()); //
     }
 
-    // The getter functions below are helper methods for null safety in onBindViewHolder. The code block above would look terrible else how. - Kevin 20260206
+
+    // The getter functions below are helper methods for null safety in `onBindViewHolder`.
+    // The original code block for it would look terrible else how. - Kevin 20260206
     private String getSafeTitle(@NonNull ViewHolder holder, Cat cat) {
         if (cat != null && cat.getTitle() != null && !cat.getTitle().trim().isEmpty()) {
             return cat.getTitle();

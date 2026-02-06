@@ -1,16 +1,21 @@
 package com.example.eecs4443_lab2.model;
 
-// This is the item data model, this should only contain the data fields and their getters/setters, no logic should be implemented here
-// Logic will be kept in ItemAdapter and DetailActivity (need to doublecheck on the DetailActivity bit). - Kevin 20260206
-
 import com.example.eecs4443_lab2.R;
-
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Data model representing a Cat item.
+ *
+ * NOTE:
+ *      This is the item data model, this should only contain the data fields
+ *      and their getters/setters, no logic should be implemented here.
+ *      Logic will be kept in ItemAdapter and DetailActivity (need to double check
+ *      on the DetailActivity bit). - Kevin 20260206
+ */
 public class Cat {
     private String title;
-    private int imageResId;     // this will contain the resource ID number for the thumbnail in the drawable folder. - Kevin 20260206
+    private int imageResId;
     private String description;
 
     public Cat(String title, int imageResId, String description) {
@@ -19,6 +24,12 @@ public class Cat {
         this.description = description;
     }
 
+    /**
+     * Returns hardcoded list of 15 sample Cat items.
+     *
+     * NOTE:
+     *      Please don't change or remove any of the cats. 😠 - Kevin 20260206
+     */
     public static List<Cat> getSampleCats() {
         List<Cat> cats = new ArrayList<>();
         cats.add(new Cat("Whiskers", R.drawable.cat1, "Playful and energetic."));
@@ -39,6 +50,7 @@ public class Cat {
         return cats;
     }
 
+    // getters and setters
     public String getTitle() {
         return title;
     }
