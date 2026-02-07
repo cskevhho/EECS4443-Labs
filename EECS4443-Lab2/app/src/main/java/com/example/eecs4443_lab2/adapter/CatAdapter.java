@@ -14,6 +14,9 @@ import com.example.eecs4443_lab2.model.Cat;
 
 import java.util.ArrayList;
 import java.util.List;
+import android.content.Intent;
+import com.example.eecs4443_lab2.ui.DetailActivity;
+
 
 
 
@@ -95,6 +98,15 @@ public class CatAdapter extends RecyclerView.Adapter<CatAdapter.ViewHolder> {
         holder.descView.setText(getSafeDescription(holder, cat));
         holder.imageView.setImageResource(getSafeImageResId(cat));
         holder.imageView.setContentDescription(holder.titleView.getText()); //
+        holder.itemView.setOnClickListener(v -> {
+            if (cat == null) return;
+
+            Intent intent = new Intent(v.getContext(), DetailActivity.class);
+            intent.putExtra("image", cat.getImageResId());
+            intent.putExtra("title", cat.getTitle());
+            intent.putExtra("description", cat.getDescription());
+            v.getContext().startActivity(intent);
+        });
     }
 
 
