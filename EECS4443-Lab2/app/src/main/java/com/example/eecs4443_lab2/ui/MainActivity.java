@@ -7,7 +7,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.eecs4443_lab2.R;
+import com.example.eecs4443_lab2.adapter.CatAdapter;
+import com.example.eecs4443_lab2.model.Cat;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,5 +28,11 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        RecyclerView recyclerView = findViewById(R.id.cat_recyclerView);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+
+        List<Cat> cats = Cat.getSampleCats();
+        recyclerView.setAdapter(new CatAdapter(cats));
     }
 }
