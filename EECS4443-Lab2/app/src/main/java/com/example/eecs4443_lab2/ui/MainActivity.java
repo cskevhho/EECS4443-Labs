@@ -29,9 +29,11 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        // Assigns RecyclerView to use GridLayoutManager
         RecyclerView recyclerView = findViewById(R.id.cat_recyclerView);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
+        // Passes data to the adapter
         List<Cat> cats = Cat.getSampleCats();
         recyclerView.setAdapter(new CatAdapter(cats));
     }
